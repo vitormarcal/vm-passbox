@@ -22,7 +22,7 @@ public class Senha implements Serializable {
 	private String palavraPasse;
 	
 	@Transient
-	private Login login;
+	private Usuario usuario;
 	
 	public Long getId() {
 		return id;
@@ -36,11 +36,13 @@ public class Senha implements Serializable {
 	public void setPalavraPasse(String palavraPasse) {
 		this.palavraPasse = palavraPasse;
 	}
-	public Login getLogin() {
-		return login;
+
+	public Usuario getUsuario() {
+		return usuario;
 	}
-	public void setLogin(Login login) {
-		this.login = login;
+	
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 	
