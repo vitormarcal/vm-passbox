@@ -3,14 +3,18 @@ package com.vitormarcal.passbox.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
+@Table(name = "pessoa")
 public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -18,12 +22,13 @@ public class Pessoa implements Serializable {
 	@Id
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
+	@Column(name = "idPessoa")
 	private Long id;
 	
 	private String nome;
 	
-	@Transient
-	private List<Login>passes;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pessoa")
+	private List<Usuario>usuarios;
 	
 
 	public Long getId() {
@@ -38,12 +43,13 @@ public class Pessoa implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public List<Login> getPasses() {
-		return passes;
-	}
-	public void setPasses(List<Login> passes) {
-		this.passes = passes;
+
+	public List<Usuario> getUsuarios() {
+		return usuarios;
 	}
 	
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
 
 }
