@@ -10,8 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -33,7 +33,7 @@ public class Usuario implements Serializable {
 	@JoinColumn(name = "idPessoa", nullable = false)
 	private Pessoa pessoa;
 	
-	@Transient
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
 	private List<Senha> senhas;
 	
 	public Long getId() {
