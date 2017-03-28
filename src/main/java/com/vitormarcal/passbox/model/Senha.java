@@ -2,14 +2,19 @@ package com.vitormarcal.passbox.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
+@Table(name = "senha")
 public class Senha implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -17,11 +22,17 @@ public class Senha implements Serializable {
 	@Id
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
+	@Column(name = "idSenha")
 	private Long id;
 	
 	private String palavraPasse;
 	
-	@Transient
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idLocalCredenciado", nullable = false)
+	private LocalCredenciado localCredenciado;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idUsuario", nullable = false)
 	private Usuario usuario;
 	
 	public Long getId() {
@@ -45,6 +56,13 @@ public class Senha implements Serializable {
 		this.usuario = usuario;
 	}
 	
+	public LocalCredenciado getLocalCredenciado() {
+		return localCredenciado;
+	}
+	
+	public void setLocalCredenciado(LocalCredenciado localCredenciado) {
+		this.localCredenciado = localCredenciado;
+	}
 	
 	
 

@@ -14,41 +14,38 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "pessoa")
-public class Pessoa implements Serializable {
+@Table(name = "localCredenciado")
+public class LocalCredenciado implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
-	@Column(name = "idPessoa")
+	@Column(name = "idLocalCredenciado")
 	private Long id;
 	
-	private String nome;
+	private String local;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pessoa")
-	private List<Usuario>usuarios;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "localCredenciado")
+	private List<Senha> senhas;
 
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
+
+	public String getLocal() {
+		return local;
 	}
 
-	public List<Usuario> getUsuarios() {
-		return usuarios;
+	public void setLocal(String local) {
+		this.local = local;
 	}
 	
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
-
+	
+	
 }
