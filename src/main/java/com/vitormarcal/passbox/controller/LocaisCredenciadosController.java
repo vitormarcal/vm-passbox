@@ -12,7 +12,7 @@ import com.vitormarcal.passbox.repository.LocaisCredenciados;
 
 @Controller
 @RequestMapping("/locaisCredenciados")
-public class LocalCredenciadoController {
+public class LocaisCredenciadosController {
 
 	@Autowired
 	private LocaisCredenciados locaisCredenciados;
