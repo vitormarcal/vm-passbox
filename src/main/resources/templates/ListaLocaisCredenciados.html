@@ -6,7 +6,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
 
-<title>Lista de Pessoas</title>
+<title>Lista de Locais Credenciados</title>
 
 <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
 	rel="stylesheet" />
@@ -41,9 +41,9 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="localCrendeciado : ${locaisCredenciados}">
-						<td th:text="${localCredenciado.id}"></td>
-						<td th:text="${localCredenciado.local}"></td>
+					<tr th:each="local : ${locaisCredenciados}">
+						<td th:text="${local.id}"></td>
+						<td th:text="${local.local}"></td>
 					</tr>
 				</tbody>
 			</table>
