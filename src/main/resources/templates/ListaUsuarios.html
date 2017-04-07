@@ -6,7 +6,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
 
-<title>Lista de Pessoas</title>
+<title>Lista de Usuarios</title>
 
 <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
 	rel="stylesheet" />
@@ -15,33 +15,26 @@
 </head>
 <body>
 
-
+	<h1>Lista de Usuários</h1>
 
 
 	<div class="panel panel-default" style="margin: 10px">
 
 		<div class="panel-body">
 
-			<form class="form-inline" method="POST" th:object="${pessoa}"
-				th:action="@{/pessoas}" style="margin: 20px 0">
-				
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Nome"
-						th:field="*{nome}" />
-					<button type="submit" class="btn btn-primary">Adicionar</button>
-				</div>
-			</form>
 			<table class="table">
 				<thead>
 					<tr>
 						<th>Id</th>
 						<th>Nome</th>
+						<th>Pessoa</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="pessoa : ${pessoas}">
-						<td th:text="${pessoa.id}"></td>
-						<td th:text="${pessoa.nome}"></td>
+					<tr th:each="usuario : ${usuarios}">
+						<td th:text="${usuario.id}"></td>
+						<td th:text="${usuario.userName}"></td>
+						<td th:text="${usuario.pessoa.nome}"></td>
 					</tr>
 				</tbody>
 			</table>
