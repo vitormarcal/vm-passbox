@@ -27,7 +27,11 @@
 				
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Nome"
-						th:field="*{nome}" />
+						th:field="*{nome}" id="nome"/>
+					<select class="form-control" th:field="*{genero}">
+						<option th:each="genero : ${generos}" th:value="${genero}" th:text="${genero.descricao}"></option>
+					</select>		
+				
 					<button type="submit" class="btn btn-primary">Adicionar</button>
 				</div>
 			</form>
@@ -36,12 +40,14 @@
 					<tr>
 						<th>Id</th>
 						<th>Nome</th>
+						<th>Gênero</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="pessoa : ${pessoas}">
 						<td th:text="${pessoa.id}"></td>
 						<td th:text="${pessoa.nome}"></td>
+						<td th:text="${pessoa.genero.descricao}"></td>
 					</tr>
 				</tbody>
 			</table>
