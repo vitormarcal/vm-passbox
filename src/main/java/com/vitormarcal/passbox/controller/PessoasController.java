@@ -20,7 +20,7 @@ public class PessoasController {
 	@GetMapping
 	public ModelAndView listar(){
 		ModelAndView modelAndView = new ModelAndView("ListaPessoas");
-		
+	
 		modelAndView.addObject("pessoas", pessoas.findAll());
 		modelAndView.addObject("pessoa", new Pessoa());
 		return modelAndView;
