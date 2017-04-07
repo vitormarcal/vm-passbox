@@ -28,6 +28,7 @@
 						<th>Id</th>
 						<th>Nome</th>
 						<th>Gênero</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -35,6 +36,11 @@
 						<td th:text="${pessoa.id}"></td>
 						<td th:text="${pessoa.nome}"></td>
 						<td th:text="${pessoa.genero.descricao}"></td>
+						<td class="text-center">
+							<a class="btn btn-link btn-xs">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</a>
+						</td>
 					</tr>
 				</tbody>
 			</table>
