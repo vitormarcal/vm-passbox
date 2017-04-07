@@ -22,20 +22,15 @@
 
 		<div class="panel-body">
 
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Local</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="local : ${locaisCredenciados}">
-						<td th:text="${local.id}"></td>
-						<td th:text="${local.local}"></td>
-					</tr>
-				</tbody>
-			</table>
+			<form class="form-inline" method="POST" th:object="${localCredenciado}"
+				th:action="@{/locaisCredenciados}" style="margin: 20px 0">
+				
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Local"
+						th:field="*{local}" />
+					<button type="submit" class="btn btn-primary">Adicionar</button>
+				</div>
+			</form>
 		</div>
 	</div>
 
