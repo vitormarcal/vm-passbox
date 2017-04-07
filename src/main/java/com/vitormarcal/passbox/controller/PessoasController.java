@@ -27,9 +27,15 @@ public class PessoasController {
 		ModelAndView modelAndView = new ModelAndView("ListaPessoas");
 	
 		modelAndView.addObject("pessoas", pessoas.findAll());
-		modelAndView.addObject("pessoa", new Pessoa());
 		return modelAndView;
 	}
+	
+	@GetMapping("/novo")
+	public ModelAndView novo() {
+		ModelAndView modelAndView = new ModelAndView("CadastroPessoa");
+		return modelAndView;
+	}
+	
 	
 	@PostMapping
 	public String salvar(Pessoa pessoa){
@@ -40,5 +46,10 @@ public class PessoasController {
 	@ModelAttribute("generos")
 	public List<GeneroEnum> todosGeneros(){
 		return Arrays.asList(GeneroEnum.values());
+	}
+	
+	@ModelAttribute("pessoa")
+	public Pessoa getPessoa(){
+		return new Pessoa();
 	}
 }
