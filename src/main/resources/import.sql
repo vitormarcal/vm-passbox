@@ -3,9 +3,9 @@ insert into local_credenciado (id_local_credenciado, local) values (2, 'Gmail');
 insert into local_credenciado (id_local_credenciado, local) values (3, 'Hotmail');
 insert into local_credenciado (id_local_credenciado, local) values (4, 'Escambal');
 
-insert into pessoa (id_pessoa, nome) values (1, 'Vítor');
-insert into pessoa (id_pessoa, nome) values (2, 'Maria');
-insert into pessoa (id_pessoa, nome) values (3, 'Ricardo');
+insert into pessoa (id_pessoa, nome, genero) values (1, 'Vítor', 'MASCULINO');
+insert into pessoa (id_pessoa, nome) values (2, 'Maria', 'FEMININO');
+insert into pessoa (id_pessoa, nome) values (3, 'Ricardo', 'MASCULINO');
 
 insert into usuario (id_usuario, user_name, id_pessoa) values (1, 'vitormarcal', 1);
 insert into usuario (id_usuario, user_name, id_pessoa) values (2, 'vimarcal', 1);

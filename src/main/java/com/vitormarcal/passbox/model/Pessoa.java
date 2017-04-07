@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.vitormarcal.passbox.enums.GeneroEnum;
 
 @Entity
 @Table(name = "pessoa")
@@ -26,6 +30,9 @@ public class Pessoa implements Serializable {
 	private Long id;
 	
 	private String nome;
+	
+	@Enumerated(EnumType.STRING)
+	private GeneroEnum genero;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pessoa")
 	private List<Usuario>usuarios;
@@ -49,6 +56,14 @@ public class Pessoa implements Serializable {
 	
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
+	}
+	
+	public GeneroEnum getGenero() {
+		return genero;
+	}
+	
+	public void setGenero(GeneroEnum genero) {
+		this.genero = genero;
 	}
 	
 	
