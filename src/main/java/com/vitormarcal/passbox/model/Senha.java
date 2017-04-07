@@ -10,8 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "senha")
@@ -25,6 +27,8 @@ public class Senha implements Serializable {
 	@Column(name = "idSenha")
 	private Long id;
 	
+	@NotNull
+	@NotEmpty
 	private String palavraPasse;
 	
 	@ManyToOne(fetch = FetchType.LAZY)

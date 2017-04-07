@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -29,6 +31,8 @@ public class Pessoa implements Serializable {
 	@Column(name = "idPessoa")
 	private Long id;
 	
+	@NotNull
+	@Size(min = 5, max = 200)
 	private String nome;
 	
 	@Enumerated(EnumType.STRING)

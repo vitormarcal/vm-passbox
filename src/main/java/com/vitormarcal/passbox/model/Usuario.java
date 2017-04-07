@@ -12,8 +12,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "usuario")
@@ -27,6 +29,8 @@ public class Usuario implements Serializable {
 	@Column(name = "idUsuario")
 	private Long id;
 	
+	@NotNull
+	@NotEmpty
 	private String userName;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
