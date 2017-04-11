@@ -23,6 +23,8 @@ import com.vitormarcal.passbox.repository.Pessoas;
 @RequestMapping("/pessoas")
 public class PessoasController {
 
+	private static final String CADASTRO_VIEW = "CadastroPessoa";
+	
 	@Autowired
 	private Pessoas pessoas;
 	
@@ -36,14 +38,14 @@ public class PessoasController {
 	
 	@GetMapping("/novo")
 	public ModelAndView novo() {
-		ModelAndView modelAndView = new ModelAndView("CadastroPessoa");
+		ModelAndView modelAndView = new ModelAndView(CADASTRO_VIEW);
 		return modelAndView;
 	}
 	
 	@GetMapping("{id}")
-	public ModelAndView edicao(@PathVariable Long id){
-		ModelAndView modelAndView = new ModelAndView();
-		
+	public ModelAndView edicao(@PathVariable("id") Pessoa pessoa){
+		ModelAndView modelAndView = new ModelAndView(CADASTRO_VIEW);
+		modelAndView.addObject(pessoa);
 		return modelAndView;
 	}
 	
@@ -52,7 +54,7 @@ public class PessoasController {
 	public ModelAndView salvar(@Validated Pessoa pessoa, Errors errors){
 		ModelAndView modelAndView = new ModelAndView();
 		if(errors.hasErrors()){
-			modelAndView.setViewName("CadastroPessoa");
+			modelAndView.setViewName(CADASTRO_VIEW);
 			modelAndView.addObject("pessoa", pessoa);
 			return modelAndView;
 		}
