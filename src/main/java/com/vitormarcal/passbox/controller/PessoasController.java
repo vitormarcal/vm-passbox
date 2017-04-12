@@ -4,8 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,10 +44,10 @@ public class PessoasController {
 	}
 	
 	@GetMapping("{id}")
-	public ModelAndView edicao(@PathVariable("id") Pessoa pessoa){
+	public ResponseEntity<Pessoa> edicao(@PathVariable("id") Pessoa pessoa){
 		ModelAndView modelAndView = new ModelAndView(CADASTRO_VIEW);
 		modelAndView.addObject(pessoa);
-		return modelAndView;
+		return new ResponseEntity<Pessoa>(pessoa, HttpStatus.OK);
 	}
 	
 	
@@ -72,4 +73,7 @@ public class PessoasController {
 	public Pessoa getPessoa(){
 		return new Pessoa();
 	}
+	
+	
+	
 }

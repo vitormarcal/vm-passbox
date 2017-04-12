@@ -16,6 +16,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.vitormarcal.passbox.enums.GeneroEnum;
 
@@ -32,13 +34,15 @@ public class Pessoa implements Serializable {
 	private Long id;
 	
 	@NotNull
-	@Size(min = 5, max = 200)
+	@NotEmpty
+	@NotBlank
+	@Size(max = 200)
 	private String nome;
 	
 	@Enumerated(EnumType.STRING)
 	private GeneroEnum genero;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pessoa")
+	@OneToMany(fetch = FetchType.EAGER)
 	private List<Usuario>usuarios;
 
 	public Long getId() {

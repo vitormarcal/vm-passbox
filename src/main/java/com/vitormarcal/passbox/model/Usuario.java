@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
@@ -31,11 +32,10 @@ public class Usuario implements Serializable {
 	
 	@NotNull
 	@NotEmpty
+	@NotBlank
 	private String userName;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idPessoa", nullable = false)
-	private Pessoa pessoa;
+
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
 	private List<Senha> senhas;
@@ -54,13 +54,6 @@ public class Usuario implements Serializable {
 		this.userName = userName;
 	}
 	
-	public Pessoa getPessoa() {
-		return pessoa;
-	}
-	
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
-	}
 	
 	public List<Senha> getSenhas() {
 		return senhas;

@@ -22,8 +22,8 @@
 
 		<div class="panel-body">
 
-			<form class="form-inline" method="POST" th:object="${pessoa}"
-				th:action="@{/pessoas}" style="margin: 20px 0">
+			<form class="form-inline" method="POST" th:object="${usuario}"
+				th:action="@{/usuarios}" style="margin: 20px 0">
 				
 				<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
 					<div th:each="detailedError : ${#fields.detailedErrors()}">
@@ -33,12 +33,8 @@
 				
 				<div class="form-group">
 					<input type="hidden" th:field="*{id}" />
-					<input type="text" class="form-control" placeholder="Nome"
-						th:field="*{nome}" id="nome"/>
-					<select class="form-control" th:field="*{genero}">
-						<option th:each="genero : ${generos}" th:value="${genero}" th:text="${genero.descricao}"></option>
-					</select>		
-				
+					<input type="text" class="form-control" placeholder="User Name"
+						th:field="*{userName}" id="userName"/>		
 					<button type="submit" class="btn btn-primary">Adicionar</button>
 				</div>
 			</form>
@@ -47,13 +43,15 @@
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Usuário</th>
+						<th>Senha</th>
+						<th>Local</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="usuario : ${pessoa.usuarios}">
-						<td th:text="${usuario.id}"></td>
-						<td th:text="${usuario.userName}"></td>
+					<tr th:each="senha : ${usuario.senhas}">
+						<td th:text="${senha.id}"></td>
+						<td th:text="${senha.palavraPasse}"></td>
+						<td th:text="${senha.localCredenciado.local}"></td>
 						<td class="text-center">
 							<a class="btn btn-link btn-xs" th:href="@{/usuarios/{id}(id=${usuario.id})}">
 								<span class="glyphicon glyphicon-eye-open"></span>
