@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
@@ -29,6 +30,7 @@ public class Senha implements Serializable {
 	
 	@NotNull
 	@NotEmpty
+	@NotBlank
 	private String palavraPasse;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
