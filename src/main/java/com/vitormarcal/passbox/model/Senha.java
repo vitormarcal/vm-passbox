@@ -33,13 +33,10 @@ public class Senha implements Serializable {
 	@NotBlank
 	private String palavraPasse;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idLocalCredenciado", nullable = false)
 	private LocalCredenciado localCredenciado;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idUsuario", nullable = false)
-	private Usuario usuario;
+
 	
 	public Long getId() {
 		return id;
@@ -54,14 +51,6 @@ public class Senha implements Serializable {
 		this.palavraPasse = palavraPasse;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-	
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-	
 	public LocalCredenciado getLocalCredenciado() {
 		return localCredenciado;
 	}
