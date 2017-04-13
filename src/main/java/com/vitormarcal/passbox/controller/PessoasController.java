@@ -45,8 +45,6 @@ public class PessoasController {
 	
 	@GetMapping("{id}")
 	public ResponseEntity<Pessoa> edicao(@PathVariable("id") Pessoa pessoa){
-		ModelAndView modelAndView = new ModelAndView(CADASTRO_VIEW);
-		modelAndView.addObject(pessoa);
 		return new ResponseEntity<Pessoa>(pessoa, HttpStatus.OK);
 	}
 	

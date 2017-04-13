@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -42,7 +43,8 @@ public class Pessoa implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private GeneroEnum genero;
 	
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "pessoa_id")
 	private List<Usuario>usuarios;
 
 	public Long getId() {
