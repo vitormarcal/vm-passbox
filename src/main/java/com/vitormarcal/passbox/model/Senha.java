@@ -20,8 +20,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name = "senha")
 public class Senha implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = -7870217310906599035L;
+
 	@Id
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")

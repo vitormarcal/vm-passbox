@@ -17,7 +17,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name = "localCredenciado")
 public class LocalCredenciado implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -4743939627423649066L;
 
 	@Id
 	@GeneratedValue(generator = "increment")

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -20,8 +21,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name = "usuario")
 public class Usuario implements Serializable {
 	
-	private static final long serialVersionUID = 1L;
 	
+	private static final long serialVersionUID = -6894243828890841833L;
+
 	@Id
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
@@ -33,9 +35,8 @@ public class Usuario implements Serializable {
 	@NotBlank
 	private String userName;
 	
-
-	
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "usuario_id")
 	private List<Senha> senhas;
 	
 	public Long getId() {
