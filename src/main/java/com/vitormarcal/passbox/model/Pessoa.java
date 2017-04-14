@@ -26,8 +26,8 @@ import com.vitormarcal.passbox.enums.GeneroEnum;
 @Table(name = "pessoa")
 public class Pessoa implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 8142940935792468721L;
+
 	@Id
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
