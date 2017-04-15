@@ -3,6 +3,7 @@ package com.vitormarcal.passbox.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -35,7 +36,7 @@ public class Usuario implements Serializable {
 	@NotBlank
 	private String userName;
 	
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "usuario_id")
 	private List<Senha> senhas;
 	

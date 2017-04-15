@@ -3,6 +3,7 @@ package com.vitormarcal.passbox.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -43,7 +44,7 @@ public class Pessoa implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private GeneroEnum genero;
 	
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "pessoa_id")
 	private List<Usuario>usuarios;
 
