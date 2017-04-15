@@ -9,9 +9,9 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,26 +32,20 @@ public class UsuariosController {
 		return new ResponseEntity<List<Usuario>>(usuarios.findAll(), HttpStatus.OK);
 	}
 	
-	@PostMapping
-	public ResponseEntity<Usuario> salvar(@Validated Usuario usuario, Errors errors){
-		Usuario usuarioBanco = this.usuarios.save(usuario);
-		return new ResponseEntity<Usuario>(usuarioBanco, HttpStatus.OK);
+	@GetMapping("{id}")
+	public ResponseEntity<Usuario> buscar(@PathVariable("id") Usuario usuario){
+		return new ResponseEntity<>(usuario, HttpStatus.OK);
 	}
 	
-	@GetMapping("{id}")
-	public ResponseEntity<Usuario> edicao(@PathVariable("id") Usuario usuario){
-		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
+	@PostMapping({"{id}", ""})
+	public ResponseEntity<Usuario> salvar(@RequestBody@Validated Usuario usuario, Errors errors){
+		Usuario usuarioBanco = this.usuarios.save(usuario);
+		return new ResponseEntity<Usuario>(usuarioBanco, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("{id}")
 	public void delete(@PathVariable("id") Long id){
 		usuarios.delete(id);
-	}
-	
-	
-	@ModelAttribute("usuario")
-	public Usuario getUsuario(){
-		return new Usuario();
 	}
 
 }
