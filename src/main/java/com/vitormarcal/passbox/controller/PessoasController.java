@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vitormarcal.passbox.model.Pessoa;
+import com.vitormarcal.passbox.model.ResponseMessage;
 import com.vitormarcal.passbox.repository.Pessoas;
 
 @RestController
@@ -42,10 +44,11 @@ public class PessoasController {
 	}
 	
 	@DeleteMapping("{id}")
-	public ResponseEntity<Object> delete(@PathVariable("id") Long id){
+	@ResponseBody
+	public ResponseEntity<ResponseMessage> delete(@PathVariable("id") Long id){
 		pessoas.delete(id);
 		
-		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>(ResponseMessage.success("pessoa.removida"),HttpStatus.NO_CONTENT);
 	}
 	
 }
