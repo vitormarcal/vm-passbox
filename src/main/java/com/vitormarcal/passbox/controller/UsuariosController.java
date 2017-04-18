@@ -44,8 +44,10 @@ public class UsuariosController {
 	}
 	
 	@DeleteMapping("{id}")
-	public void delete(@PathVariable("id") Long id){
+	public ResponseEntity<Object> delete(@PathVariable("id") Long id){
 		usuarios.delete(id);
+		
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
 }
