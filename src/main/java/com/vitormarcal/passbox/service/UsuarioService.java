@@ -20,20 +20,20 @@ public class UsuarioService {
 	
 	
 	public Usuario save(Usuario usuario) {
-		Usuario usuarioSalva = usuarios.save(usuario);
+		Usuario usuarioSalva = this.usuarios.save(usuario);
 		
 		return usuarioSalva;
 	}
 
 
 	public List<Usuario> findAll() {
-		return usuarios.findAll();
+		return this.usuarios.findAll();
 	}
 	
 	public Usuario findOne(Long id){
 		
-		Assert.notNull(id, "id da usuario não pode ser nulo");
-		Usuario usuario = usuarios.findOne(id);
+		Assert.notNull(id, "id do usuario não pode ser nulo");
+		Usuario usuario = this.usuarios.findOne(id);
 		
 		if(usuario == null){
 			throw new ResourceNotFoundException(id);
@@ -43,15 +43,15 @@ public class UsuarioService {
 	}
 	
 	public Usuario update(Usuario usuario){
-		Assert.notNull(usuario.getId(), "id da usuario não pode estar nulo");
+		Assert.notNull(usuario.getId(), "id do usuario não pode estar nulo");
 		
-		Usuario usuarioBanco = usuarios.findOne(usuario.getId()); 
+		Usuario usuarioBanco = this.usuarios.findOne(usuario.getId()); 
 		
 		if(usuarioBanco == null){
 			throw new ResourceNotFoundException(usuario.getId());
 		}
 		
-		Usuario usuarioSalva = usuarios.save(usuario);
+		Usuario usuarioSalva = this.usuarios.save(usuario);
 		
 		return usuarioSalva;
 		
@@ -60,14 +60,14 @@ public class UsuarioService {
 
 
 	public void deleteUsuarioById(Long id) {
-		Assert.notNull(id, "id da usuario não pode ser nula");
-		Usuario usuario = usuarios.findOne(id);
+		Assert.notNull(id, "id do usuario não pode ser nula");
+		Usuario usuario = this.usuarios.findOne(id);
 		
 		if(usuario == null){
 			throw new ResourceNotFoundException(id);
 		}
 		
-		usuarios.delete(id);
+		this.usuarios.delete(id);
 		
 		
 	}
