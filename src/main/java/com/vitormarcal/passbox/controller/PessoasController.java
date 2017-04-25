@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.vitormarcal.passbox.model.Pessoa;
-import com.vitormarcal.passbox.service.PassBoxService;
+import com.vitormarcal.passbox.service.PessoaService;
 
 @RestController
 @RequestMapping("/pessoas")
@@ -28,22 +28,22 @@ public class PessoasController {
 
 	
 	@Autowired
-	private PassBoxService passBoxService;
+	private PessoaService pessoaService;
 	
 	@GetMapping
 	public ResponseEntity<List<Pessoa>> listar(){
-		return new ResponseEntity<List<Pessoa>>(passBoxService.findAll(), HttpStatus.OK);
+		return new ResponseEntity<List<Pessoa>>(pessoaService.findAll(), HttpStatus.OK);
 	}
 	
 	@GetMapping("{id}")
 	public ResponseEntity<Pessoa> buscar(@PathVariable("id") Long id){
-		Pessoa pessoa = passBoxService.findOne(id);
+		Pessoa pessoa = pessoaService.findOne(id);
 		return new ResponseEntity<>(pessoa, HttpStatus.OK);
 	}
 	
 	@PostMapping
 	public ResponseEntity<Void> salvar(@RequestBody @Validated Pessoa pessoa){
-		Pessoa pessoaBanco = passBoxService.save(pessoa);
+		Pessoa pessoaBanco = pessoaService.save(pessoa);
 		
 		URI location = ServletUriComponentsBuilder.
 				fromContextPath(null)
@@ -59,14 +59,14 @@ public class PessoasController {
 	
 	@PutMapping("{id}")
 	public ResponseEntity<Void> alterar(@PathVariable("id") @RequestBody @Validated Pessoa pessoa){
-		passBoxService.update(pessoa);
+		pessoaService.update(pessoa);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT); 
 	}
 	
 	@DeleteMapping("{id}")
 	@ResponseBody
 	public ResponseEntity<Void> delete(@PathVariable("id") Long id){
-		passBoxService.deletePessoaById(id);
+		pessoaService.deletePessoaById(id);
 		
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
