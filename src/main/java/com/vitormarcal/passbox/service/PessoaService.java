@@ -10,17 +10,13 @@ import org.springframework.util.Assert;
 import com.vitormarcal.passbox.exception.ResourceNotFoundException;
 import com.vitormarcal.passbox.model.Pessoa;
 import com.vitormarcal.passbox.repository.Pessoas;
-import com.vitormarcal.passbox.repository.Usuarios;
 
 @Service
 @Transactional
-public class PassBoxService {
+public class PessoaService {
 
 	@Autowired
 	private Pessoas pessoas;
-	
-	@Autowired
-	private Usuarios usuarios;
 	
 	
 	public Pessoa save(Pessoa pessoa) {
