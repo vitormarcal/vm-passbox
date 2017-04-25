@@ -32,18 +32,18 @@ public class PessoasController {
 	
 	@GetMapping
 	public ResponseEntity<List<Pessoa>> listar(){
-		return new ResponseEntity<List<Pessoa>>(pessoaService.findAll(), HttpStatus.OK);
+		return new ResponseEntity<List<Pessoa>>(this.pessoaService.findAll(), HttpStatus.OK);
 	}
 	
 	@GetMapping("{id}")
 	public ResponseEntity<Pessoa> buscar(@PathVariable("id") Long id){
-		Pessoa pessoa = pessoaService.findOne(id);
+		Pessoa pessoa = this.pessoaService.findOne(id);
 		return new ResponseEntity<>(pessoa, HttpStatus.OK);
 	}
 	
 	@PostMapping
 	public ResponseEntity<Void> salvar(@RequestBody @Validated Pessoa pessoa){
-		Pessoa pessoaBanco = pessoaService.save(pessoa);
+		Pessoa pessoaBanco = this.pessoaService.save(pessoa);
 		
 		URI location = ServletUriComponentsBuilder.
 				fromContextPath(null)
@@ -59,14 +59,14 @@ public class PessoasController {
 	
 	@PutMapping("{id}")
 	public ResponseEntity<Void> alterar(@PathVariable("id") @RequestBody @Validated Pessoa pessoa){
-		pessoaService.update(pessoa);
+		this.pessoaService.update(pessoa);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT); 
 	}
 	
 	@DeleteMapping("{id}")
 	@ResponseBody
 	public ResponseEntity<Void> delete(@PathVariable("id") Long id){
-		pessoaService.deletePessoaById(id);
+		this.pessoaService.deletePessoaById(id);
 		
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
