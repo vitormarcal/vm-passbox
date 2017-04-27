@@ -1,4 +1,4 @@
-package com.vitormarcal.passbox.controller;
+package com.vitormarcal.passbox.api;
 
 import java.net.URI;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.vitormarcal.passbox.controller;
+package com.vitormarcal.passbox.api;
 
 import java.net.URI;
 import java.util.List;
@@ -27,11 +27,12 @@ import com.vitormarcal.passbox.service.PessoaService;
 public class PessoasController {
 
 	
+	
 	@Autowired
 	private PessoaService pessoaService;
 	
 	@GetMapping
-	public ResponseEntity<List<Pessoa>> listar(){
+	public ResponseEntity<List<Pessoa>> listar(){				
 		return new ResponseEntity<List<Pessoa>>(this.pessoaService.findAll(), HttpStatus.OK);
 	}
 	
