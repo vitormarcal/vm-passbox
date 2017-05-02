@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.vitormarcal.passbox.model.Pessoa;
+import com.vitormarcal.passbox.model.Usuario;
 import com.vitormarcal.passbox.service.PessoaService;
 
 @RestController
@@ -71,5 +72,5 @@ public class PessoasController {
 		
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
-	
+
 }

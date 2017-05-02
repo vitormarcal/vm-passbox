@@ -1,7 +1,7 @@
 package com.vitormarcal.passbox.model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,7 +11,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -44,9 +43,8 @@ public class Pessoa implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private GeneroEnum genero;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "pessoa_id")
-	private List<Usuario>usuarios;
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "pessoa")
+	private Set<Usuario>usuarios;
 
 	public Long getId() {
 		return id;
@@ -61,20 +59,21 @@ public class Pessoa implements Serializable {
 		this.nome = nome;
 	}
 
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
-	
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
-	
+		
 	public GeneroEnum getGenero() {
 		return genero;
 	}
 	
 	public void setGenero(GeneroEnum genero) {
 		this.genero = genero;
+	}
+	
+	public Set<Usuario> getUsuarios() {
+		return usuarios;
+	}
+	
+	public void setUsuarios(Set<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
 	
 	

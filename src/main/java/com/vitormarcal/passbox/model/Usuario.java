@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -17,6 +18,8 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "usuario")
@@ -40,6 +43,11 @@ public class Usuario implements Serializable {
 	@JoinColumn(name = "usuario_id")
 	private List<Senha> senhas;
 	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "idPessoa", nullable = false)
+	private Pessoa pessoa;
+	
 	public Long getId() {
 		return id;
 	}
@@ -62,6 +70,14 @@ public class Usuario implements Serializable {
 		this.senhas = senhas;
 	}
 	
+	
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+	
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
 	
 	
 	@Override
