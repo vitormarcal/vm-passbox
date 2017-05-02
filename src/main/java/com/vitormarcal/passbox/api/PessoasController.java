@@ -32,7 +32,7 @@ public class PessoasController {
 	private PessoaService pessoaService;
 	
 	@GetMapping
-	public ResponseEntity<List<Pessoa>> listar(){				
+	public ResponseEntity<List<Pessoa>> listar(){
 		return new ResponseEntity<List<Pessoa>>(this.pessoaService.findAll(), HttpStatus.OK);
 	}
 	
