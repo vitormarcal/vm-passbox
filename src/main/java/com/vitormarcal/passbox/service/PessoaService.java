@@ -9,7 +9,6 @@ import org.springframework.util.Assert;
 
 import com.vitormarcal.passbox.exception.ResourceNotFoundException;
 import com.vitormarcal.passbox.model.Pessoa;
-import com.vitormarcal.passbox.model.Usuario;
 import com.vitormarcal.passbox.repository.Pessoas;
 
 @Service
