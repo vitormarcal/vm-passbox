@@ -1,6 +1,7 @@
 package com.vitormarcal.passbox.service;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import com.vitormarcal.passbox.exception.ResourceNotFoundException;
+import com.vitormarcal.passbox.model.Pessoa;
 import com.vitormarcal.passbox.model.Usuario;
 import com.vitormarcal.passbox.repository.Usuarios;
 
@@ -70,6 +72,15 @@ public class UsuarioService {
 		this.usuarios.delete(id);
 		
 		
+	}
+
+
+	public Set<Usuario> findUsuarioByPessoa(Pessoa pessoa) {
+		
+		Assert.notNull(pessoa, "pessoa não encontrada");
+		Assert.notNull(pessoa.getId(), "id da pessoa não pode ser nula");
+		
+		return this.usuarios.findUsuarioByPessoa(pessoa);
 	}
 
 
